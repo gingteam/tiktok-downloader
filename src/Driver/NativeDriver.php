@@ -27,8 +27,8 @@ class NativeDriver implements DriverInterface
 
         /** @var array{ItemModule:array<array{video:array{playAddr:string}}>} */
         $data = json_decode($json, true);
-        $video = array_pop($data['ItemModule']);
+        $video = array_pop($data['ItemModule'])['video'];
 
-        return $video['video']['playAddr'];
+        return $video['playAddr'];
     }
 }
