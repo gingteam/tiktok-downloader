@@ -14,6 +14,11 @@ class TikTokDownloader
         $this->driver = $driver ?? new NativeDriver();
     }
 
+    public function setDriver(DriverInterface $driver): void
+    {
+        $this->driver = $driver;
+    }
+
     public function getVideo(string $url): string
     {
         return $this->driver->getVideo($url);
