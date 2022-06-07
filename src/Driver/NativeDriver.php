@@ -18,11 +18,12 @@ class NativeDriver implements DriverInterface
     {
         $crawler = $this->client->request('GET', $url);
 
-        if (0 === $crawler->filter('#SIGI_STATE')->count()) {
+        $filter = $crawler->filter('#SIGI_STATE');
+        if (0 === $filter->count()) {
             throw new \InvalidArgumentException('Invalid URL');
         }
 
-        $json = $crawler->filter('#SIGI_STATE')->innerText();
+        $json = $filter->innerText();
 
         /** @var array{ItemModule:array<array{video:array{playAddr:string}}>} */
         $data = json_decode($json, true);

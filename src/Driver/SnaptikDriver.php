@@ -7,7 +7,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SnaptikDriver implements DriverInterface
 {
-    public const CDN_URL = 'https://tikcdn.net/file/';
+    public const CDN_URL = 'https://tikcdn.net/file.php';
 
     public const PARAM_REGEX = '/\("([a-zA-Z]+)",[0-9]+,"([a-zA-Z]+)",([0-9]+),([0-9]+),[0-9]+\)/';
 
@@ -35,7 +35,7 @@ class SnaptikDriver implements DriverInterface
             throw new \InvalidArgumentException('Invalid URL');
         }
 
-        return self::CDN_URL.$token.'.mp4';
+        return self::CDN_URL.'?token='.$token.'&full_hd=1';
     }
 
     /**
