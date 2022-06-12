@@ -1,6 +1,8 @@
+<img src="https://i.imgur.com/OyY198O.png" width="200px" align="right">
+
 # TikTok Downloader
 
-<img src="https://i.imgur.com/OyY198O.png" width="200px" align="right">
+[![test](https://github.com/gingteam/tiktok-downloader/actions/workflows/ci.yml/badge.svg)](https://github.com/gingteam/tiktok-downloader/actions/workflows/ci.yml)
 
 ## Installation
 
