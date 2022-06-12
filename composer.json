@@ -1,5 +1,6 @@
 {
     "name": "gingteam/tiktok",
+    "description": "Tiktok video downloader",
     "type": "library",
     "require": {
         "fabpot/goutte": "^4.0"
@@ -25,5 +26,8 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "scripts": {
+        "test": "pest"
     }
 }
