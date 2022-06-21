@@ -3,7 +3,8 @@
     "description": "Tiktok video downloader",
     "type": "library",
     "require": {
-        "fabpot/goutte": "^4.0"
+        "fabpot/goutte": "^4.0",
+        "mck89/peast": "^1.14"
     },
     "license": "MIT",
     "autoload": {
