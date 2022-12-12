@@ -21,6 +21,6 @@ class TikTokDownloader
 
     public function getVideo(string $url): string
     {
-        return $this->driver->getVideo($url);
+        return $this->driver->handle($url);
     }
 }

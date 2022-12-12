@@ -20,7 +20,7 @@ class SnaptikDriver implements DriverInterface
         $this->client = new Client($client);
     }
 
-    public function getVideo(string $url): string
+    public function handle(string $url): string
     {
         $form = $this->client
             ->request('GET', 'https://snaptik.app/vn')

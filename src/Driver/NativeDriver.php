@@ -14,7 +14,7 @@ class NativeDriver implements DriverInterface
         $this->client = new Client($client);
     }
 
-    public function getVideo(string $url): string
+    public function handle(string $url): string
     {
         $crawler = $this->client->request('GET', $url);
 

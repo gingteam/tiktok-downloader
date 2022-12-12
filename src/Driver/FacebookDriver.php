@@ -18,7 +18,7 @@ class FacebookDriver implements DriverInterface
         $this->client = new Client($client);
     }
 
-    public function getVideo(string $url): string
+    public function handle(string $url): string
     {
         $form = $this->client
             ->request('GET', 'https://snapsave.app/vn')

@@ -4,5 +4,5 @@ namespace TikTok\Driver;
 
 interface DriverInterface
 {
-    public function getVideo(string $url): string;
+    public function handle(string $url): string;
 }
