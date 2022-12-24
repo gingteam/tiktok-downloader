@@ -4,3 +4,4 @@ composer.lock
 /*.php
 drivers
 /*.cache
+php.ini
