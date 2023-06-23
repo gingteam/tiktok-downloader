@@ -17,11 +17,11 @@ composer require gingteam/tiktok:dev-main
 <?php
 
 use TikTok\Driver\SnaptikDriver;
-use TikTok\TikTokDownloader;
+use TikTok\VideoDownloader;
 
 require __DIR__.'/vendor/autoload.php';
 
-$tiktok = new TikTokDownloader(new SnaptikDriver());
+$tiktok = new VideoDownloader(new SnaptikDriver());
 
-echo $tiktok->getVideo('https://www.tiktok.com/@philandmore/video/6805867805452324102');
+echo $tiktok->get('https://www.tiktok.com/@philandmore/video/6805867805452324102');
 ```

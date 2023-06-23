@@ -2,7 +2,7 @@
 
 namespace TikTok\Driver;
 
-use Goutte\Client;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use TikTok\Util\Token;
 
@@ -10,11 +10,11 @@ class FacebookDriver implements DriverInterface
 {
     public const CDN_URL = 'https://snapxcdn.com/v2';
 
-    private Client $client;
+    private HttpBrowser $client;
 
     public function __construct(HttpClientInterface $client = null)
     {
-        $this->client = new Client($client);
+        $this->client = new HttpBrowser($client);
     }
 
     public function handle(string $url): string
