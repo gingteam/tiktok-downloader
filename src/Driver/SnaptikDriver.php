@@ -19,13 +19,19 @@ class SnaptikDriver implements DriverInterface
 
     public function handle(string $url): string
     {
-        $form = $this->client
+        $crawler = $this->client
             ->request('GET', 'https://snaptik.app/vn')
             ->filter('form')
-            ->form()
-            ->setValues(['url' => $url]);
+            ->first();
 
-        $this->client->submit($form);
+        /** @var \DOMElement */
+        $el = $crawler->getNode(0);
+        $el->setAttribute('action', 'https://snaptik.app/abc2.php');
+        $el->setAttribute('method', 'POST');
+
+        $form = $crawler->form()->setValues(['url' => $url]);
+
+        $crawler = $this->client->submit($form);
 
         /** @var \Symfony\Component\BrowserKit\Response */
         $response = $this->client->getResponse();
