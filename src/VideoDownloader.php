@@ -21,7 +21,10 @@ class VideoDownloader
         return $this;
     }
 
-    public function get(string $url): string
+    /**
+     * @return string|false
+     */
+    public function get(string $url)
     {
         return $this->driver->handle($url);
     }

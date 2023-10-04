@@ -4,5 +4,8 @@ namespace TikTok\Driver;
 
 interface DriverInterface
 {
-    public function handle(string $url): string;
+    /**
+     * @return string|false Trả về `false` trong trường hợp thất bại
+     */
+    public function handle(string $url);
 }

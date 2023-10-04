@@ -2,40 +2,38 @@
 
 namespace TikTok\Driver;
 
-use Symfony\Component\BrowserKit\HttpBrowser;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
+use TikTok\Concern\Crawlable;
 use TikTok\Util\Token;
 
 class FacebookDriver implements DriverInterface
 {
+    use Crawlable;
+
     public const CDN_URL = 'https://snapxcdn.com/v2';
 
-    private HttpBrowser $client;
-
-    public function __construct(HttpClientInterface $client = null)
+    public function handle(string $url)
     {
-        $this->client = new HttpBrowser($client);
-    }
+        $browser = $this->getBrowser();
 
-    public function handle(string $url): string
-    {
-        $form = $this->client
+        $crawler = $browser
             ->request('GET', 'https://snapsave.app/vn')
             ->filter('form')
-            ->form()
-            ->setValues(['url' => $url]);
+            ->first();
 
-        $this->client->submit($form);
+        /** @var \DOMElement */
+        $el = $crawler->getNode(0);
+        $el->setAttribute('action', '/action.php');
+        $el->setAttribute('method', 'POST');
+
+        $form = $crawler->form()->setValues(['url' => $url]);
+
+        $browser->submit($form);
 
         /** @var \Symfony\Component\BrowserKit\Response */
-        $response = $this->client->getResponse();
+        $response = $browser->getResponse();
 
         $token = Token::extract($response->getContent());
 
-        if (!$token) {
-            throw new \InvalidArgumentException('Invalid URL');
-        }
-
-        return sprintf('%s/?token=%s&dl=1', self::CDN_URL, $token);
+        return $token ? sprintf('%s/?token=%s&dl=1', self::CDN_URL, $token) : false;
     }
 }
