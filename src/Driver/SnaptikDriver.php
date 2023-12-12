@@ -5,6 +5,9 @@ namespace TikTok\Driver;
 use TikTok\Concern\Crawlable;
 use TikTok\Util\Token;
 
+/**
+ * @implements DriverInterface<string|false>
+ */
 class SnaptikDriver implements DriverInterface
 {
     use Crawlable;

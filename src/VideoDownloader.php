@@ -3,17 +3,30 @@
 namespace TikTok;
 
 use TikTok\Driver\DriverInterface;
-use TikTok\Driver\NativeDriver;
 
+/**
+ * @template T
+ */
 class VideoDownloader
 {
+    /**
+     * @var DriverInterface<T>
+     */
     private DriverInterface $driver;
 
-    public function __construct(DriverInterface $driver = null)
+    /**
+     * @param DriverInterface<T> $driver
+     */
+    public function __construct(DriverInterface $driver)
     {
-        $this->driver = $driver ?? new NativeDriver();
+        $this->driver = $driver;
     }
 
+    /**
+     * @param DriverInterface<T> $driver
+     *
+     * @return self<T>
+     */
     public function setDriver(DriverInterface $driver): self
     {
         $this->driver = $driver;
@@ -22,7 +35,7 @@ class VideoDownloader
     }
 
     /**
-     * @return string|false
+     * @return T
      */
     public function get(string $url)
     {
