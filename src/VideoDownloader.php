@@ -25,7 +25,7 @@ class VideoDownloader
     /**
      * @param DriverInterface<T> $driver
      *
-     * @return self<T>
+     * @return VideoDownloader<T>
      */
     public function setDriver(DriverInterface $driver): self
     {
